@@ -1,0 +1,13 @@
+[package]
+name = "clock-rs"
+version = "0.1.0"
+edition = "2021"
+authors = ["NewDawn0 (Tom)"]
+license = "MIT"
+keywords = ["date", "clock", "time"]
+categories = ["command-line-utilities"]
+
+[dependencies]
+colored = "2"
+chrono = "0.4"
+simple-scheduler = "0.1.0"
