@@ -1,8 +1,8 @@
 // Setup
-use colored::Colorize;
+use pad::{PadStr, Alignment};
 use chrono::Local;
-use std::process;
-use std::thread::sleep;
+use colored::Colorize;
+use std::{thread, process};
 use simple_scheduler::{
     Duration, Time,
     Schedule, ScheduleAt, ScheduledTask, task
@@ -11,10 +11,10 @@ use simple_scheduler::{
 
 // Main
 fn main() {
-    // Setup tasks
+    // Setup
     let every_second = ScheduledTask::new(
         ScheduleAt::Interval(Duration::seconds(1)),
-        task!(async {/*TODO ADD clock */})
+        task!(async { clock()})
     ).unwrap();
     let schedule = Schedule::builder()
         .tasks([
@@ -22,16 +22,25 @@ fn main() {
         ])
         .wake_interval(Duration::seconds(1)).unwrap()
         .build();
-    // Presetup: clear terminal and hide cursor
     clear();
-    print!("\x1b[?25l");
     // Run
     schedule.run();
     loop {}
-    // Postsetup: re-enable cursor
-    print!("\x1b[?25h");
 }
 // fn clear
 fn clear() {
     process::Command::new("clear").status().unwrap();
+}
+// fn clock
+fn clock () {
+    clear();
+    let now = Local::now();
+    let time = now.format("%H:%M:%S");
+    // Box
+    let date = now.format("%A :: %d %b %Y");
+    let _mid = format!("{}", date.to_string().pad_to_width_with_alignment(68, Alignment::Middle).truecolor(249,212,102));
+    let mid = format!("┃{}┃", _mid);
+    println!("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+    println!("{}", mid);
+    println!("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 }
