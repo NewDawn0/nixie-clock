@@ -22,11 +22,14 @@ fn main() {
         ])
         .wake_interval(Duration::seconds(1)).unwrap()
         .build();
-    // Clear Terminal
+    // Presetup: clear terminal and hide cursor
     clear();
-    // run
+    print!("\x1b[?25l");
+    // Run
     schedule.run();
     loop {}
+    // Postsetup: re-enable cursor
+    print!("\x1b[?25h");
 }
 // fn clear
 fn clear() {
