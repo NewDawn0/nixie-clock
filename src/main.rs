@@ -11,6 +11,7 @@ use simple_scheduler::{
 
 // Main
 fn main() {
+    // Setup tasks
     let every_second = ScheduledTask::new(
         ScheduleAt::Interval(Duration::seconds(1)),
         task!(async {/*TODO ADD clock */})
@@ -21,6 +22,13 @@ fn main() {
         ])
         .wake_interval(Duration::seconds(1)).unwrap()
         .build();
+    // Clear Terminal
+    clear();
+    // run
     schedule.run();
     loop {}
+}
+// fn clear
+fn clear() {
+    process::Command::new("clear").status().unwrap();
 }
