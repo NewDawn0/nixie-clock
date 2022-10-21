@@ -1,7 +1,7 @@
-// Setupbul
-use pad::{PadStr, Alignment};
+// Setup
 use chrono::Local;
 use colored::Colorize;
+use pad::{PadStr, Alignment};
 use std::process::{exit, Command};
 use simple_scheduler::{Duration, Schedule, ScheduleAt, ScheduledTask, task};
 // Constants
@@ -43,7 +43,7 @@ fn bulb (dig: &str, index: u8) -> String {
     let sl = "\\".to_string().truecolor(255,147,54);
     let bsl = "/".to_string().truecolor(255,147,54);
     match index {
-        0 => format!("{}", "  ---^---  ".to_string().truecolor(255,147,54)),
+        0 => format!("{}", " .---^---. ".to_string().truecolor(255,147,54)),
         1..=6 => format!(" {} {} {} ", block, dig.truecolor(249,212,102), block),
         7 => format!("  {}{}{}  ", sl, dig.truecolor(249,212,102), bsl),
         8 => format!("{}", "  |||||||  ".to_string().truecolor(140,130,140)),
