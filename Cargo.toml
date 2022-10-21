@@ -1,5 +1,5 @@
 [package]
-name = "clock-rs"
+name = "nixie-clock"
 version = "0.1.0"
 edition = "2021"
 authors = ["NewDawn0 (Tom)"]
