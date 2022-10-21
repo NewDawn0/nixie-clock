@@ -39,16 +39,14 @@ fn clear() {
 }
 // fn bulb
 fn bulb (dig: &str, index: u8) -> String {
+    let block = "|".to_string().truecolor(255,147,54);
+    let sl = "\\".to_string().truecolor(255,147,54);
+    let bsl = "/".to_string().truecolor(255,147,54);
     match index {
-        0 => String::from("  ---^---  "),
-        1 => format!(" | {} | ", dig.truecolor(249,212,102)),
-        2 => format!(" | {} | ", dig.truecolor(249,212,102)),
-        3 => format!(" | {} | ", dig.truecolor(249,212,102)),
-        4 => format!(" | {} | ", dig.truecolor(249,212,102)),
-        5 => format!(" | {} | ", dig.truecolor(249,212,102)),
-        6 => format!(" | {} | ", dig.truecolor(249,212,102)),
-        7 => format!("  \\{}/  ", dig.truecolor(249,212,102)),
-        8 => String::from("  |||||||  "),
+        0 => format!("{}", "  ---^---  ".to_string().truecolor(255,147,54)),
+        1..=6 => format!(" {} {} {} ", block, dig.truecolor(249,212,102), block),
+        7 => format!("  {}{}{}  ", sl, dig.truecolor(249,212,102), bsl),
+        8 => format!("{}", "  |||||||  ".to_string().truecolor(140,130,140)),
         _ => {
             println!("Error aborting");
             exit(1);
@@ -84,8 +82,9 @@ fn clock () {
     // Box
     let date = now.format("%A :: %d %b %Y");
     let _mid = format!("{}", date.to_string().pad_to_width_with_alignment(93, Alignment::Middle).truecolor(249,212,102));
-    let mid = format!("┃{}┃", _mid);
-    println!("┃▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔┃");
+    let block = format!("{}", "┃".to_string().truecolor(140, 110, 140));
+    let mid = format!("{}{}{}", block, _mid, block);
+    println!("{}", format!("{}", "┃▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔┃".to_string().truecolor(140,110,140)));
     println!("{}", mid);
-    println!("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+    println!("{}", format!("{}", "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛".to_string().truecolor(140,110,140)));
 }
