@@ -16,6 +16,8 @@
           overlays = [ inputs.rust-overlay.overlays.default ];
         };
     in {
+      overlays.default =
+        (final: prev: { nixie-clock = self.packages.${prev.system}.default; });
       packages = eachSystem (system:
         let pkgs = mkPkgs system;
         in {
