@@ -1,4 +1,4 @@
-# Nixie-clock
+# Nixie clock
 
 A simple command-line nixie clock which shows the date and time
 
