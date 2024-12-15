@@ -22,15 +22,22 @@
         let pkgs = mkPkgs system;
         in {
           default = pkgs.rustPlatform.buildRustPackage {
-            name = "nixie-clock";
+            pname = "nixie-clock";
             version = "1.0.0";
-            cargoLock.lockFile = ./Cargo.lock;
-            src = pkgs.lib.cleanSource ./.;
-            meta = with pkgs.lib; {
-              description = "A commandline clock with nixie tubes";
+            src = ./.;
+            cargoHash = "sha256-oqiXeX7ct2miDNoURF7+9lElebX4coVox+qzPgUBbj0=";
+            meta = {
+              description =
+                "A CLI clock that displays time in a Nixie tube style";
+              longDescription = ''
+                A unique command-line clock that displays the current time using Nixie tube-style digits.
+                This charming design adds a vintage touch to your terminal while providing an accurate clock.
+              '';
+
               homepage = "https://github.com/NewDawn0/nixie-clock";
-              maintainers = with maintainers; [ "NewDawn0" ];
-              license = licenses.mit;
+              license = pkgs.lib.licenses.mit;
+              maintainers = with pkgs.lib.maintainers; [ NewDawn0 ];
+              platforms = pkgs.lib.platforms.all;
             };
           };
         });
