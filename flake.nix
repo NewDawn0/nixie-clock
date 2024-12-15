@@ -25,7 +25,7 @@
             pname = "nixie-clock";
             version = "1.0.0";
             src = ./.;
-            cargoHash = "sha256-oqiXeX7ct2miDNoURF7+9lElebX4coVox+qzPgUBbj0=";
+            cargoHash = "sha256-tJVn1C+AOyhzJ+aviknor1m++CHveBWHIKNAmR9XWGM=";
             meta = {
               description =
                 "A CLI clock that displays time in a Nixie tube style";
